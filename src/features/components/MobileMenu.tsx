@@ -1,5 +1,5 @@
 import { Phone, Mail } from 'lucide-react'
-import { PageRoute } from '@/types'
+import { PageRoute } from '@/src/types'
 import React from "react"
 
 interface MobileMenuProps {

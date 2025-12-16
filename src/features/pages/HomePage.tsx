@@ -1,5 +1,4 @@
 import { BLOG_POSTS, HERO_IMAGE, HOME_TEXT_CONTENT, HOME_TEXT_TITLE, PROJECTS } from "@/src/constants";
-import { PageRoute } from "@/types";
 import React from "react";
 import { Button } from "../components/Button";
 import { Section } from "../components/Section";
@@ -20,9 +19,9 @@ const HomePage: React.FC = () => {
         <img 
           src={HERO_IMAGE} 
           alt="Modern SIP House" 
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
+          className="absolute inset-0 w-full h-full object-cover opacity-95"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent" />
+        <div className="absolute inset-0" />
         <div className="absolute inset-0 flex items-center justify-center text-center px-4">
           <div className="max-w-4xl space-y-8 animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight">
@@ -42,7 +41,7 @@ const HomePage: React.FC = () => {
                 onClick={() => navigate('/contacts')} 
                 className="min-w-[200px] text-white border-white/30 hover:bg-white hover:text-stone-900 hover:border-white"
               >
-                Рассчитать стоимость
+                контакты
               </Button>
             </div>
           </div>

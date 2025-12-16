@@ -15,7 +15,6 @@ import ProjectDetailPage from '../features/pages/ProjectDetailPage';
 const navItems = [
   { label: 'Главная', path: '/' },
   { label: 'Проекты', path: '/catalog' },
-  { label: 'Услуги', path: '/services' },
   { label: 'Блог', path: '/blog' },
   { label: 'Контакты', path: '/contacts' },
 ];
@@ -62,7 +61,6 @@ const AppRoutes: React.FC = () => {
           <Route path="/catalog/:id" element={<ProjectDetailPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPostPage />} />
-          <Route path="/services" element={<StubPage />} />
           <Route path="/contacts" element={<StubPage />} />
         </Routes>
       </main>

@@ -1,4 +1,4 @@
-import { Project } from "@/types";
+import { PageRoute, Project } from '@/src/types'
 import { ArrowRight } from "lucide-react";
 import React from 'react';
 
@@ -29,7 +29,7 @@ export const ProjectCard: React.FC<{ project: Project; onClick: (id: string) => 
         </p>
         <div className="mt-auto pt-4 border-t border-stone-100 flex justify-between items-center">
           <span className="text-lg font-medium text-stone-900">
-            {project.price.toLocaleString('ru-RU')} ₽
+            Подробнее
           </span>
           <span className="text-stone-400 group-hover:text-stone-900 transition-colors">
             <ArrowRight className="w-5 h-5" />

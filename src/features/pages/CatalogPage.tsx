@@ -2,7 +2,6 @@ import { CATEGORIES, PROJECTS } from "@/src/constants";
 import { AdPlaceholder } from "../components/AdPlaceholde";
 import { ProjectCard } from "../components/ProjectCard";
 import { Section } from "../components/Section";
-import { PageRoute } from "@/types";
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";

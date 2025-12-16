@@ -4,7 +4,6 @@ import { Section } from "../components/Section";
 import { Button } from "../components/Button";
 import { Check, Download, Home, Layers, Ruler } from "lucide-react";
 import { AdPlaceholder } from "../components/AdPlaceholde";
-import { PageRoute } from "@/types";
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 
@@ -54,7 +53,7 @@ const ProjectDetailPage: React.FC = () => {
               <p className="text-lg text-stone-600 font-light leading-relaxed">{project.shortDescription}</p>
             </div>
 
-            <AdPlaceholder label="Спецпредложение" className="h-32" />
+          
 
             {/* Gallery Grid */}
             <div>
@@ -107,27 +106,19 @@ const ProjectDetailPage: React.FC = () => {
                         <td className="p-4 text-stone-900 border-b border-stone-100">{value}</td>
                       </tr>
                     ))}
-                    <tr className="bg-white">
-                      <td className="p-4 text-stone-500 font-medium w-1/3">Стоимость домокомплекта</td>
-                      <td className="p-4 text-xl font-serif text-stone-900">{project.price.toLocaleString('ru-RU')} ₽</td>
-                    </tr>
+
                   </tbody>
                 </table>
               </div>
             </div>
 
-            <div className="pt-8">
-              <Button variant="primary" className="w-full md:w-auto gap-2">
-                <Download className="w-4 h-4" /> Скачать презентацию PDF
-              </Button>
-            </div>
+
           </div>
 
           {/* Sidebar (Right 1 col) */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-8">
               <div className="bg-white p-8 border border-stone-100 shadow-xl shadow-stone-200/50">
-                <h3 className="text-2xl font-serif mb-2">{project.price.toLocaleString('ru-RU')} ₽</h3>
                 <p className="text-xs text-stone-400 uppercase tracking-widest mb-6">Базовая комплектация</p>
                 
                 <div className="space-y-4 mb-8">
@@ -153,8 +144,8 @@ const ProjectDetailPage: React.FC = () => {
                     <img src="https://i.pravatar.cc/150?img=33" alt="Manager" />
                   </div>
                   <div>
-                    <div className="font-medium text-stone-900">Мария Иванова</div>
-                    <div className="text-xs text-stone-500">+7 (999) 000-00-00</div>
+                    <div className="font-medium text-stone-900">Роман Игнатьев</div>
+                    <div className="text-xs text-stone-500"><a href="tel:+79372427773">+7 937 242 7773</a></div>
                   </div>
                 </div>
               </div>

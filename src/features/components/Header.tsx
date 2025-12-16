@@ -52,17 +52,6 @@ const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Desktop Contacts */}
-        <div className="hidden md:flex items-center gap-6">
-          <div className="text-right">
-            <div className="text-xs text-stone-400 uppercase tracking-widest">
-              Отдел продаж
-            </div>
-            <div className="font-medium text-stone-900">+7 (495) 000-00-00</div>
-          </div>
-          <Button className="!py-2 !px-4 !text-xs">
-            <NavLink to="/contacts">Заявка</NavLink>
-          </Button>
-        </div>
 
         {/* Mobile Toggle */}
         <button className="md:hidden p-2" onClick={onToggleMobileMenu}>

@@ -1,7 +1,6 @@
 import { BLOG_POSTS } from "@/src/constants";
 import { Button } from "../components/Button";
 import { Section } from "../components/Section";
-import { PageRoute } from "@/types";
 import React from "react"
 import { useNavigate } from 'react-router-dom'
 
