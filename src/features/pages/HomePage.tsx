@@ -1,16 +1,19 @@
 import { BLOG_POSTS, HERO_IMAGE, HOME_TEXT_CONTENT, HOME_TEXT_TITLE, PROJECTS } from "@/src/constants";
-import React from "react";
+import React, { useState, useEffect } from 'react'
 import { Button } from "../components/Button";
 import { Section } from "../components/Section";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { ProjectCard } from "../components/ProjectCard";
 import { useNavigate } from "react-router-dom";
+import { useGetHeroProjectsQuery } from "@/src/store/api/projectsApi";
+import { RiFridgeFill } from "react-icons/ri";
 
 
 
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()
+  const { data:projects, isLoading, error } = useGetHeroProjectsQuery()
 
   return (
     <>
@@ -66,11 +69,10 @@ const HomePage: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.slice(0, 3).map(p => (
+          {Array.isArray(projects) && projects.map(p => (
             <ProjectCard key={p.id} project={p} onClick={() => navigate(`/catalog/${p.id}`)} />
           ))}
         </div>
-        
         <div className="mt-8 md:hidden text-center">
           <Button variant="outline" onClick={() => navigate('/catalog')}>Смотреть все</Button>
         </div>
