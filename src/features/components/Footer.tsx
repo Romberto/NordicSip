@@ -7,7 +7,7 @@ import { TelegramIcon } from './TelelgramIcon'
 const Footer: React.FC = () => {
   return (
     <footer className="bg-stone-900 text-stone-400 py-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 place-items-center">
 
         {/* Brand */}
         <div>
@@ -21,8 +21,8 @@ const Footer: React.FC = () => {
           </Link>
 
           <p className="text-sm leading-relaxed mb-6 text-stone-500">
-            Строим современные теплые дома по SIP-технологии.
-            Полный цикл работ: от проектирования до внутренней отделки.
+            Проекты современных тёплых домов по SIP-технологии.
+            
           </p>
 
         </div>
@@ -39,11 +39,6 @@ const Footer: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-white transition-colors">
-                Услуги и цены
-              </Link>
-            </li>
-            <li>
               <Link to="/blog" className="hover:text-white transition-colors">
                 Блог
               </Link>
@@ -57,7 +52,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Info */}
-        <div>
+        {/* <div>
           <h4 className="text-white font-medium mb-6 uppercase tracking-widest text-xs">
             Информация
           </h4>
@@ -83,7 +78,7 @@ const Footer: React.FC = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Contacts */}
         <div>

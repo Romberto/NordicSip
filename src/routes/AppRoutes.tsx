@@ -9,6 +9,7 @@ import HomePage from '../features/pages/HomePage';
 import CatalogPage from '../features/pages/CatalogPage';
 import BlogPage from '../features/pages/BlogPage';
 import ProjectDetailPage from '../features/pages/ProjectDetailPage';
+import ContactsPage from '../features/pages/ContactPage';
 
 
 // Removed imports for missing modules to fix errors
@@ -61,7 +62,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/catalog/:slug" element={<ProjectDetailPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/contacts" element={<StubPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
       </main>
 

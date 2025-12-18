@@ -1,4 +1,4 @@
-import { BLOG_POSTS, HERO_IMAGE, HOME_TEXT_CONTENT, HOME_TEXT_TITLE, PROJECTS } from "@/src/constants";
+import { BLOG_POSTS, HERO_IMAGE, HOME_TEXT_CONTENT, HOME_TEXT_TITLE } from "@/src/constants";
 import React, { useState, useEffect } from 'react'
 import { Button } from "../components/Button";
 import { Section } from "../components/Section";

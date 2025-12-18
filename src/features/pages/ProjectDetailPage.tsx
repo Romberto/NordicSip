@@ -1,70 +1,63 @@
-import React, { useEffect, useMemo, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { Check, Home, Layers, Ruler } from "lucide-react"
+import React, { useEffect, useMemo, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Check, Home, Layers, Ruler } from "lucide-react";
 
-import { Section } from "../components/Section"
-import { Button } from "../components/Button"
-import { ProjectCard } from "../components/ProjectCard"
-import { AdPlaceholder } from "../components/AdPlaceholde"
+import { Section } from "../components/Section";
+import { Button } from "../components/Button";
+import { ProjectCard } from "../components/ProjectCard";
+import { AdPlaceholder } from "../components/AdPlaceholde";
 
-import { useGetProjectBySlugQuery } from "@/src/store/api/projectsApi"
+import { useGetProjectBySlugQuery } from "@/src/store/api/projectsApi";
+import { TELEGRAM } from "@/src/constants";
 
 const ProjectDetailPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>()
-  const navigate = useNavigate()
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
 
-  const {
-    data: project,
-    isLoading,
-    isError,
-  } = useGetProjectBySlugQuery(slug)
+  const { data: project, isLoading, isError } = useGetProjectBySlugQuery(slug);
 
-  const [activeImage, setActiveImage] = useState<string | null>(null)
-
-
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [slug])
+    window.scrollTo(0, 0);
+  }, [slug]);
   // ====== АДАПТАЦИЯ ДАННЫХ ======
   const previewImage = useMemo(
-    () => project?.images.find(img => img.is_preview)?.public_url ?? null,
+    () => project?.images.find((img) => img.is_preview)?.public_url ?? null,
     [project]
-  )
+  );
 
   const galleryImages = useMemo(
     () =>
       project?.images
-        .filter(img => img.is_gallery)
-        .map(img => img.public_url) ?? [],
+        .filter((img) => img.is_gallery)
+        .map((img) => img.public_url) ?? [],
     [project]
-  )
+  );
 
   const plans = useMemo(
     () =>
       project?.images
-        .filter(img => img.is_plan)
-        .map(img => img.public_url) ?? [],
+        .filter((img) => img.is_plan)
+        .map((img) => img.public_url) ?? [],
     [project]
-  )
-
-  // useEffect(() => {
-  //   if (previewImage) setActiveImage(null)
-  // }, [previewImage])
-
+  );
 
   // ====== СОСТОЯНИЯ ======
   if (isLoading) {
-    return <div className="py-32 text-center text-stone-500">Загрузка проекта…</div>
+    return (
+      <div className="py-32 text-center text-stone-500">Загрузка проекта…</div>
+    );
   }
 
   if (isError || !project) {
-    return <div className="py-32 text-center text-red-500">Проект не найден</div>
+    return (
+      <div className="py-32 text-center text-red-500">Проект не найден</div>
+    );
   }
 
   return (
     <div className="animate-fade-in pb-20">
-
       {/* Header Image */}
       <div className="relative h-[60vh] w-full bg-stone-900">
         {previewImage && (
@@ -98,10 +91,8 @@ const ProjectDetailPage: React.FC = () => {
 
       <Section className="!py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
           {/* Main */}
           <div className="lg:col-span-2 space-y-12">
-
             <AdPlaceholder label="Реклама от партнеров" />
 
             {/* О проекте */}
@@ -151,7 +142,12 @@ const ProjectDetailPage: React.FC = () => {
                       <h4 className="text-sm font-bold uppercase tracking-widest text-stone-400 mb-4">
                         План {idx + 1}
                       </h4>
-                      <img src={plan} alt="Plan" className="w-full h-auto cursor-pointer" onClick={() => setActiveImage(plan)}/>
+                      <img
+                        src={plan}
+                        alt="Plan"
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => setActiveImage(plan)}
+                      />
                     </div>
                   ))}
                 </div>
@@ -176,14 +172,13 @@ const ProjectDetailPage: React.FC = () => {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-8">
-
               <div className="bg-white p-8 border border-stone-100 shadow-xl shadow-stone-200/50">
                 <p className="text-xs text-stone-400 uppercase tracking-widest mb-6">
                   Базовая комплектация
                 </p>
 
                 <div className="space-y-4 mb-8">
-                  {["Теплый контур", "Окна Rehau", "Монтаж"].map(item => (
+                  {["Теплый контур", "Окна Rehau", "Монтаж"].map((item) => (
                     <div
                       key={item}
                       className="flex items-center gap-3 text-sm text-stone-600"
@@ -193,18 +188,30 @@ const ProjectDetailPage: React.FC = () => {
                   ))}
                 </div>
 
-                <Button className="w-full mb-3">Оставить заявку</Button>
-                <Button variant="outline" className="w-full">
+                <Button
+                  className="w-full mb-3"
+                  onClick={() => {
+                    window.open(`https://t.me/${TELEGRAM}`, "_blank");
+                  }}
+                >
+                  Оставить заявку
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => {
+                    window.open(`https://t.me/${TELEGRAM}`, "_blank");
+                  }}
+                >
                   Задать вопрос
                 </Button>
               </div>
-
             </div>
           </div>
         </div>
       </Section>
-            {/* Fullscreen Modal */}
-            {activeImage && (
+      {/* Fullscreen Modal */}
+      {activeImage && (
         <div
           onClick={() => setActiveImage(null)} // клик на фон закрывает
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 cursor-pointer"
@@ -218,7 +225,7 @@ const ProjectDetailPage: React.FC = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProjectDetailPage
+export default ProjectDetailPage;
