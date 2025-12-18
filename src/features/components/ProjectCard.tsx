@@ -13,7 +13,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
 
   return (
     <div
-      onClick={() => onClick(project.id)}
+      onClick={() => onClick(project.slug)}
       className="group cursor-pointer flex flex-col bg-white hover:shadow-xl transition-all duration-500 ease-out border border-transparent hover:border-stone-100 overflow-hidden"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">

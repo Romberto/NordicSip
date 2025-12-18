@@ -7,6 +7,8 @@ interface ProjectsResponse {
   total: number
 }
 
+
+
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // 🔹 HERO (3 проекта)
@@ -32,10 +34,17 @@ export const projectsApi = baseApi.injectEndpoints({
         },
       }),
     }),
+
+    getProjectBySlug: builder.query<Project, string>({
+      query: slug => `/projects/${slug}`,
+      providesTags: ['Project'],
+    }),
+
   }),
 })
 
 export const {
   useGetHeroProjectsQuery,
   useGetProjectsQuery,
+  useGetProjectBySlugQuery
 } = projectsApi

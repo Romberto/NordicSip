@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Array.isArray(projects) && projects.map(p => (
-            <ProjectCard key={p.id} project={p} onClick={() => navigate(`/catalog/${p.id}`)} />
+            <ProjectCard key={p.id} project={p} onClick={() => navigate(`/catalog/${p.slug}`)} />
           ))}
         </div>
         <div className="mt-8 md:hidden text-center">

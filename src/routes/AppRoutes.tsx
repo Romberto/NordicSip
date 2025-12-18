@@ -58,9 +58,9 @@ const AppRoutes: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<ProjectDetailPage />} />
+          <Route path="/catalog/:slug" element={<ProjectDetailPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/contacts" element={<StubPage />} />
         </Routes>
       </main>

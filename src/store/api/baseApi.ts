@@ -5,5 +5,6 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: (import.meta as any).env.VITE_API_URL,
   }),
+  tagTypes: ['Project'],
   endpoints: () => ({}),
 })
