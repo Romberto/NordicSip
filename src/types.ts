@@ -28,12 +28,15 @@ export interface Project {
 export interface BlogPost {
   id: string;
   title: string;
-  excerpt: string;
-  content: string; // HTML-like string or markdown
-  date: string;
-  imageUrl: string;
-  author: string;
+  slug:string;
   category: string;
+  path_to_file:string;
+  public_url:string;
+  is_published:boolean;
+  article: string;
+  excerpt: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export type PageRoute = 

@@ -7,13 +7,24 @@ import { ProjectCard } from "../components/ProjectCard";
 import { useNavigate } from "react-router-dom";
 import { useGetHeroProjectsQuery } from "@/src/store/api/projectsApi";
 import { RiFridgeFill } from "react-icons/ri";
+import { BlogCard } from "../components/BlogCard";
+import { useGetHeroBlogsQuery } from "@/src/store/api/blogApi";
 
 
 
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()
-  const { data:projects, isLoading, error } = useGetHeroProjectsQuery()
+  const {
+    data: projects,
+    isLoading: isProjectsLoading,
+    error: projectsError
+  } = useGetHeroProjectsQuery()
+  const {
+    data: blogs,
+    isLoading: isBlogsLoading,
+    error: blogsError
+  } = useGetHeroBlogsQuery()
 
   return (
     <>
@@ -106,15 +117,10 @@ const HomePage: React.FC = () => {
       <Section>
         <h2 className="text-3xl font-serif text-stone-900 mb-10">Блог о строительстве</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map(post => (
-            <div key={post.id} onClick={() => navigate(`/blog/${post.id}`)} className="group cursor-pointer">
-              <div className="aspect-[3/2] overflow-hidden bg-stone-100 mb-4">
-                <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-              </div>
-              <div className="text-xs text-wood-500 font-bold uppercase tracking-widest mb-2">{post.category}</div>
-              <h3 className="text-xl font-serif text-stone-900 mb-2 leading-tight group-hover:text-wood-500 transition-colors">{post.title}</h3>
-              <p className="text-sm text-stone-500 font-light line-clamp-2">{post.excerpt}</p>
-            </div>
+        {Array.isArray(blogs) && blogs.map(p => (
+          <div key={p.slug}>
+            <BlogCard  blog={p}/>
+          </div>
           ))}
         </div>
       </Section>
