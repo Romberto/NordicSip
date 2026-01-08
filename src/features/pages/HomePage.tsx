@@ -15,6 +15,7 @@ import { useGetHeroBlogsQuery } from "@/src/store/api/blogApi";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()
+  
   const {
     data: projects,
     isLoading: isProjectsLoading,
@@ -115,7 +116,16 @@ const HomePage: React.FC = () => {
 
       {/* Recent Blog */}
       <Section>
-        <h2 className="text-3xl font-serif text-stone-900 mb-10">Блог о строительстве</h2>
+        <div className="flex justify-between items-end mb-12">
+          <h2 className="text-3xl font-serif text-stone-900 mb-10">Блог о строительстве</h2>
+          <button 
+            onClick={() => navigate('/blog')} 
+            className="hidden md:flex items-center gap-2 text-stone-900 hover:text-wood-500 transition-colors font-medium border-b border-stone-200 hover:border-wood-500 pb-1"
+          >
+            Весь каталог <ArrowUpRight className="w-4 h-4" />
+          </button>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {Array.isArray(blogs) && blogs.map(p => (
           <div key={p.slug}>

@@ -37,7 +37,7 @@ export const blogsApi = baseApi.injectEndpoints({
 
     getBlogsBySlug: builder.query<BlogPost, string>({
       query: slug => `/blog/${slug}`,
-      providesTags: ['Project'],
+      providesTags: ['Blog'],
     }),
 
   }),
@@ -45,6 +45,6 @@ export const blogsApi = baseApi.injectEndpoints({
 
 export const {
     useGetHeroBlogsQuery,
-  useGetBlogsBySlugQuery,
-  useGetBlogsQuery
+   useGetBlogsBySlugQuery,
+   useGetBlogsQuery
 } = blogsApi

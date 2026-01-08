@@ -2,7 +2,7 @@ import { BlogPost, Project } from "./types";
 export const TELEGRAM = "nordic_sip"
 export const PHONE = '+79372427773'
 
-export const HERO_IMAGE = "https://s3.twcstorage.ru/4338929c-466d6d4d-2d24-43f4-874e-01b20f8cdbe0/projects/ert/60ed204c-dfc5-4bd5-9682-d628e025bb67.webp";
+export const HERO_IMAGE = "https://s3.twcstorage.ru/4338929c-466d6d4d-2d24-43f4-874e-01b20f8cdbe0/Remove_the_logo_202512290653.jpeg";
 
 export const CATEGORIES = [
   { id: 'up-to-100', label: 'SIP-дома до 100 м²' },

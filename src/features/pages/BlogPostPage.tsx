@@ -1,45 +1,56 @@
-import { BLOG_POSTS } from "@/src/constants";
+import { BLOG_POSTS, TELEGRAM } from "@/src/constants";
 import { AdPlaceholder } from "../components/AdPlaceholde";
 import { Button } from "../components/Button";
 import React, { useEffect } from 'react';
+import { useGetBlogsBySlugQuery } from "@/src/store/api/blogApi";
+import { useParams } from "react-router-dom";
+import { Send } from "lucide-react";
 
 
 export const BlogPostPage: React.FC<{ id: string }> = ({ id }) => {
-    const post = BLOG_POSTS.find(p => p.id === id);
+
+
+   const { slug } = useParams<{ slug: string }>();
+    const {data: post, isLoading, isError} = useGetBlogsBySlugQuery(slug);
     
     useEffect(() => {
       window.scrollTo(0, 0);
-    }, [id]);
+    }, []);
   
-    if (!post) return <div>Post not found</div>;
+    if (!post) return <div>Post not found!!!</div>;
   
     return (
       <article className="animate-fade-in pt-12 pb-24">
          <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-12">
-               <div className="text-sm text-wood-500 font-bold uppercase tracking-widest mb-4">{post.category}</div>
                <h1 className="text-3xl md:text-5xl font-serif text-stone-900 mb-6 leading-tight">{post.title}</h1>
-               <div className="text-stone-400 font-light flex items-center justify-center gap-4">
-                  <span>{post.date}</span>
-                  <span>•</span>
-                  <span>{post.author}</span>
-               </div>
             </div>
             
-            <img src={post.imageUrl} alt={post.title} className="w-full aspect-video object-cover mb-12 rounded-sm shadow-xl shadow-stone-200" />
-            
-            <div className="prose prose-stone prose-lg max-w-none font-light text-stone-800 leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: post.content }} />
-            
+            <img src={post.public_url} alt={post.title} className="w-full aspect-video object-cover mb-12 rounded-sm shadow-xl shadow-stone-200" />
             <AdPlaceholder className="my-12" />
-            
-            <div className="mt-12 p-8 bg-stone-50 border border-stone-200">
-               <h4 className="font-serif text-xl mb-4">Понравилась статья?</h4>
-               <p className="mb-6 font-light">Подпишитесь на нашу рассылку, чтобы получать новые проекты и статьи.</p>
-               <div className="flex gap-4">
-                  <input type="email" placeholder="Ваш Email" className="flex-1 p-3 border border-stone-300 focus:border-stone-900 outline-none bg-white" />
-                  <Button>Подписаться</Button>
-               </div>
+            <div className="prose prose-stone prose-lg max-w-none font-light text-stone-800 leading-relaxed text-justify mb-6" dangerouslySetInnerHTML={{ __html: post.article }} />
+            <div className="bg-stone-900 text-white p-8 shadow-lg hover:shadow-xl transition">
+            <div className="flex items-center gap-4 mb-6">
+              <Send className="w-6 h-6 text-white" />
+              <h3 className="text-xl font-serif">
+                Telegram
+              </h3>
             </div>
+
+            <p className="text-stone-300 mb-6">
+              Напишите нам в Telegram — ответим в течение дня.
+            </p>
+
+            <a
+              href={`https://t.me/${TELEGRAM}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="w-full bg-white text-stone-900 hover:bg-stone-100">
+                Написать в Telegram
+              </Button>
+            </a>
+          </div>      
          </div>
       </article>
     );
