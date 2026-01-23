@@ -10,19 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Клонируем репозиторий
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          cd front
-          npm install
+      # 2. Проверяем структуру репозитория (опционально)
+      - name: List repo files
+        run: ls -R
 
+      # 3. Устанавливаем зависимости и собираем фронтенд (из корня)
       - name: Build frontend
         run: |
-          cd front
+          npm install
           npm run build  # создаст папку dist/
 
+      # 4. Подготавливаем папку на сервере
       - name: Prepare front folder on server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -33,12 +35,12 @@ jobs:
             rm -rf ${{ secrets.PROJECT_PATH }}/front/*
             mkdir -p ${{ secrets.PROJECT_PATH }}/front
 
-
+      # 5. Копируем билд на сервер
       - name: Copy frontend build to server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "front/dist/*"
+          source: "dist/*"   # <-- билд лежит в корне репозитория
           target: "${{ secrets.PROJECT_PATH }}/front/"
