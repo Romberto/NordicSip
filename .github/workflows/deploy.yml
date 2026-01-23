@@ -15,12 +15,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd frontend
+          cd front
           npm install
 
       - name: Build frontend
         run: |
-          cd frontend
+          cd front
           npm run build  # создаст папку dist/
 
       - name: Prepare front folder on server
@@ -39,5 +39,5 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "frontend/dist/*"
+          source: "front/dist/*"
           target: "${{ secrets.PROJECT_PATH }}/front/"
