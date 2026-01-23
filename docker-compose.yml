@@ -3,7 +3,13 @@ version: "3.9"
 services:
   frontend:
     build: .
-    container_name: nordicsip_frontend
+    container_name: nordic_frontend
     restart: always
-    ports:
-      - "127.0.0.1:3000:80"
+    expose:
+      - "3000"
+    networks:
+      - projhouse-net
+
+networks:
+  projhouse-net:
+    external: true
