@@ -33,6 +33,7 @@ jobs:
             rm -rf ${{ secrets.PROJECT_PATH }}/front/*
             mkdir -p ${{ secrets.PROJECT_PATH }}/front
 
+
       - name: Copy frontend build to server
         uses: appleboy/scp-action@v0.1.4
         with:
