@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: (import.meta as any).env.VITE_API_URL,
+    baseUrl: 'https://projhouse.ru/api/v1/'
   }),
   tagTypes: ['Project', 'Blog'],
   endpoints: () => ({}),
